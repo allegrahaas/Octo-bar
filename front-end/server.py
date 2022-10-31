@@ -74,6 +74,7 @@ def init_db():
             db.session.commit()
         except IntegrityError:
             # Ingredient already exists
+            db.session.rollback()
             pass
 
 
