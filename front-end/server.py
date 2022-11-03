@@ -55,17 +55,38 @@ class Ingredient(db.Model):
     name = db.Column(db.String(30), unique=True, nullable=False)
 
 
-# with app.app_context():
-#     db.create_all()
+ingredients = None
 
 
-@app.route('/')
-def home():
+@app.route("/")
+def root():
     return render_template("index.html")
+
+@app.route('/menu')
+def menu():
+    # TODO: Get relevant recipes
+    return render_template("menu.html", page="Menu")
+
+@app.route("/build-your-own")
+def build_your_own():
+
+    return render_template("build-your-own.html", page="BYO")
+
+@app.route("/settings")
+def settings():
+    return render_template("settings.html")
+
+def save_drink(drink: Recipe):
+    try:
+        db.session.add(drink)
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
 
 
 def init_db():
-    ingredients = ["Vodka", "Scotch", "Rum", "Gin", "Tequila", "Triple Sec", "Club Soda", "Tonic Water", "Cola"]
+    ingredients = ["Vodka", "Scotch", "Rum", "Gin", "Tequila", "Triple Sec", "Club Soda", "Tonic Water", "Cola",
+                   "Lime Juice"]
 
     for ingredient in ingredients:
         db_ingredient = Ingredient(name=ingredient)
@@ -75,9 +96,50 @@ def init_db():
         except IntegrityError:
             # Ingredient already exists
             db.session.rollback()
-            pass
+
+    margarita = Recipe(name="Margarita",
+                       custom=False,
+                       amount_1="1",
+                       ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Tequila").first(),
+                       amount_2="0.5",
+                       ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Triple Sec").first(),
+                       amount_3="1",
+                       ingredient_3=db.session.query(Ingredient).filter(Ingredient.name == "Lime Juice").first())
+    save_drink(margarita)
+
+    rum_and_cola = Recipe(name="Rum and Cola",
+                          custom=False,
+                          amount_1="1",
+                          ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Rum").first(),
+                          amount_2="Fill",
+                          ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Cola").first())
+    save_drink(rum_and_cola)
+
+    vodka_soda = Recipe(name="Vodka Soda",
+                        custom=False,
+                        amount_1="1",
+                        ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Vodka").first(),
+                        amount_2="Fill",
+                        ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Soda").first())
+    save_drink(vodka_soda)
+
+    gin_and_tonic = Recipe(name="Gin and Tonic",
+                           custom=False,
+                           amount_1="1",
+                           ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Gin").first(),
+                           amount_2="Fill",
+                           ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Tonic Water").first())
+    save_drink(gin_and_tonic)
+
+    scotch = Recipe(name="Scotch",
+                    custom=False,
+                    amount_1="1",
+                    ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Scotch").first())
+    save_drink(scotch)
 
 
+def init_app():
+    ingredients = db.session.query(Ingredient)
 
 
 if __name__ == "__main__":
@@ -85,6 +147,7 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
         init_db()
+        init_app()
 
     app.run(debug=True)
     # app.run(host='0.0.0.0', port=5000)
