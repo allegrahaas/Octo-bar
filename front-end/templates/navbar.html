@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+        <a class="navbar-brand" href="{{url_for('menu')}}">Six-Gun</a>
+            <li class="nav-item">
+              <a class="nav-link {% if page == 'Menu' %}active{% endif %}" href="{{url_for('menu')}}">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if page == 'BYO' %}active{% endif %}" href="{{url_for('build_your_own')}}">Build Your Own</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <i class="bi bi-gear-fill" style="font-size: 2rem;"></i>
+            </li>
+        </ul>
+    </div>
+</nav>
