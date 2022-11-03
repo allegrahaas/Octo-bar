@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Six-Gun{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<a class="btn btn-dark d-flex justify-content-center align-items-center h-100" href="{{url_for('menu')}}">
+    <div class="container-fluid bg-dark h-100 d-flex justify-content-center align-items-center">
+        <img src="{{ url_for('static', filename='img/Six-Gun.jpg') }}">
+    </div>
+</a>
+{% endblock %}
