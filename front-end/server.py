@@ -76,6 +76,12 @@ def build_your_own():
 def settings():
     return render_template("settings.html")
 
+
+@app.route("/recipe/<int:recipe_id>")
+def recipe(recipe_id):
+    pass
+
+
 def save_drink(drink: Recipe):
     try:
         db.session.add(drink)
