@@ -63,7 +63,9 @@ def root():
 @app.route('/menu')
 def menu():
     # TODO: Get relevant recipes
-    return render_template("menu.html", page="Menu")
+    recipes = db.session.query(Recipe).all()
+    return render_template("menu.html", page="Menu", recipes=recipes)
+
 
 @app.route("/build-your-own")
 def build_your_own():
