@@ -16,6 +16,9 @@
     <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </head>
 <body class="h-100 bg-dark">
+    {% block navbar %}{% endblock %}
+    <div class="container my-5 py-3">
     {% block content %}
     {% endblock %}
+    </div>
 </body>
