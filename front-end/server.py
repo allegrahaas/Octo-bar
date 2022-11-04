@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, URL
+import pandas
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -91,11 +92,10 @@ def save_drink(drink: Recipe):
 
 
 def init_db():
-    ingredients = ["Vodka", "Scotch", "Rum", "Gin", "Tequila", "Triple Sec", "Club Soda", "Tonic Water", "Cola",
-                   "Lime Juice"]
+    table = pandas.read_csv("static/initialization/ingredients_and_locations.csv")
 
-    for ingredient in ingredients:
-        db_ingredient = Ingredient(name=ingredient)
+    for row in table.itertuples():
+        db_ingredient = Ingredient(name=row.liquor, location=row.location)
         try:
             db.session.add(db_ingredient)
             db.session.commit()
