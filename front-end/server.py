@@ -80,7 +80,8 @@ def settings():
 
 @app.route("/recipe/<int:recipe_id>")
 def recipe(recipe_id):
-    pass
+    drink_recipe = db.session.query(Recipe).get(recipe_id)
+    return render_template("recipe.html", recipe=drink_recipe)
 
 
 def save_drink(drink: Recipe):
