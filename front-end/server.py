@@ -105,6 +105,7 @@ def init_db():
 
     margarita = Recipe(name="Margarita",
                        custom=False,
+                       fixed_size=True,
                        amount_1="1",
                        ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Tequila").first(),
                        amount_2="0.5",
@@ -115,22 +116,25 @@ def init_db():
 
     rum_and_cola = Recipe(name="Rum and Cola",
                           custom=False,
+                          fixed_size=False,
                           amount_1="1",
-                          ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Rum").first(),
+                          ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Rum - Light").first(),
                           amount_2="Fill",
                           ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Cola").first())
     save_drink(rum_and_cola)
 
     vodka_soda = Recipe(name="Vodka Soda",
                         custom=False,
+                        fixed_size=False,
                         amount_1="1",
                         ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Vodka").first(),
                         amount_2="Fill",
-                        ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Soda").first())
+                        ingredient_2=db.session.query(Ingredient).filter(Ingredient.name == "Club Soda").first())
     save_drink(vodka_soda)
 
     gin_and_tonic = Recipe(name="Gin and Tonic",
                            custom=False,
+                           fixed_size=False,
                            amount_1="1",
                            ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Gin").first(),
                            amount_2="Fill",
@@ -139,6 +143,7 @@ def init_db():
 
     scotch = Recipe(name="Scotch",
                     custom=False,
+                    fixed_size=False,
                     amount_1="1",
                     ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Scotch").first())
     save_drink(scotch)
