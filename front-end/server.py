@@ -34,7 +34,6 @@ def menu():
 
 @app.route("/build-your-own")
 def build_your_own():
-
     return render_template("build-your-own.html", page="BYO")
 
 
@@ -113,10 +112,6 @@ def init_db():
                     amount_1="1",
                     ingredient_1=db.session.query(Ingredient).filter(Ingredient.name == "Scotch").first())
     save_drink(scotch)
-
-
-def init_app():
-    ingredients = db.session.query(Ingredient)
 
 
 if __name__ == "__main__":
