@@ -61,6 +61,7 @@ ingredients = None
 def root():
     return render_template("index.html")
 
+
 @app.route('/menu')
 def menu():
     # TODO: Get relevant recipes
@@ -70,6 +71,7 @@ def menu():
 def build_your_own():
 
     return render_template("build-your-own.html", page="BYO")
+
 
 @app.route("/settings")
 def settings():
