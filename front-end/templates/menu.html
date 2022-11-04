@@ -2,6 +2,13 @@
 {% block title %}Six-Gun - Menu{% endblock %}
 
 {% block content %}
-  {% include "navbar.html" %}
-  <h1>Menu</h1>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h1 class="text-light">Menu</h1>
+        <div class="list-group">
+            {% for recipe in recipes %}
+            <a href="{{ url_for('recipe', recipe_id=recipe.id) }}" class="list-group-item list-group-item-action">{{ recipe.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
