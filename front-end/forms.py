@@ -1,8 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, SelectField
-from wtforms.validators import DataRequired
-from tables import Ingredient, db
-from flask_sqlalchemy import SQLAlchemy
+from wtforms.validators import Optional
 
 AMOUNT_OPTIONS = [("", ""), ("0.25", "1/4"), ("0.33", "1/3"), ("0.5", "1/2"), ("0.66", "2/3"), ("0.75", "3/4"),
                   ("1", "1"), ("1.5", "1.5"), ("2", "2"), ("Fill", "Fill")]
@@ -27,8 +25,6 @@ class ConfigureInventory(FlaskForm):
 
     base_0 = SelectField("Base 1")
     base_1 = SelectField("Base 2")
-
-    submit = SubmitField("Save")
 
 
 class CustomDrink(FlaskForm):
