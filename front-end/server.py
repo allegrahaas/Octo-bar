@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 from sqlalchemy.exc import IntegrityError
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -19,7 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///barbot.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-
 bot = BarBot()
 
 
@@ -31,7 +31,24 @@ def root():
 @app.route('/menu')
 def menu():
     # TODO: Get relevant recipes
-    recipes = db.session.query(Recipe).all()
+    active_ingredients = [None]
+    active_ingredients += [ingredient.id for ingredient in bot.gun if ingredient is not None]
+    active_ingredients += [ingredient.id for ingredient in bot.cooler if ingredient is not None]
+    active_ingredients += [ingredient.id for ingredient in bot.base if ingredient is not None]
+
+    print(active_ingredients)
+
+    recipes = db.session.query(Recipe) \
+        .filter(or_(Recipe.ingredient_1_id.in_(active_ingredients), Recipe.ingredient_1_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_2_id.in_(active_ingredients), Recipe.ingredient_2_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_3_id.in_(active_ingredients), Recipe.ingredient_3_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_4_id.in_(active_ingredients), Recipe.ingredient_4_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_5_id.in_(active_ingredients), Recipe.ingredient_5_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_6_id.in_(active_ingredients), Recipe.ingredient_6_id.is_(None))) \
+        .all()
+
+    print(recipes)
+
     return render_template("menu.html", page="Menu", recipes=recipes)
 
 
@@ -49,13 +66,14 @@ def settings():
 @app.route("/settings/configure-inventory", methods=["GET", "POST"])
 def configure_inventory():
     gun_ingredients = db.session.query(Ingredient).filter(Ingredient.location == "gun").all()
-    cooler_ingredients = db.session.query(Ingredient).filter(Ingredient.location == "cooler").all()
-    base_ingredients = db.session.query(Ingredient).filter(Ingredient.location == "base").all()
-
     gun_list = [(ingredient.id, ingredient.name) for ingredient in gun_ingredients]
     gun_list.insert(0, (None, "None"))
+
+    cooler_ingredients = db.session.query(Ingredient).filter(Ingredient.location == "cooler").all()
     cooler_list = [(ingredient.id, ingredient.name) for ingredient in cooler_ingredients]
     cooler_list.insert(0, (None, "None"))
+
+    base_ingredients = db.session.query(Ingredient).filter(Ingredient.location == "base").all()
     base_list = [(ingredient.id, ingredient.name) for ingredient in base_ingredients]
     base_list.insert(0, (None, "None"))
 
@@ -117,11 +135,13 @@ def configure_inventory():
 
     return render_template("configure-inventory.html", form=form)
 
+
 @app.route("/settings/pressurize-cooler-pumps")
 def prime_cooler_pumps():
     bot.prime_cooler_pumps()
     return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
                            base_pressurized=bot.base_pumps_primed)
+
 
 @app.route("/settings/depressurize-cooler-pumps")
 def depressurize_cooler_pumps():
@@ -129,17 +149,19 @@ def depressurize_cooler_pumps():
     return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
                            base_pressurized=bot.base_pumps_primed)
 
+
 @app.route("/settings/pressurize-base-pumps")
 def prime_base_pumps():
     bot.prime_base_pumps()
     return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
                            base_pressurized=bot.base_pumps_primed)
 
+
 @app.route("/settings/depressurize-base-pumps")
 def depressurize_base_pumps():
     bot.depressurize_base_pumps()
-    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed, base_pressurized=bot.base_pumps_primed)
-
+    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
+                           base_pressurized=bot.base_pumps_primed)
 
 
 @app.route("/recipe/<int:recipe_id>")
