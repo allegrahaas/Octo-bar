@@ -85,14 +85,14 @@ def configure_inventory():
                               gun_5=bot.gun[5].id if bot.gun[5] is not None else None,
                               gun_6=bot.gun[6].id if bot.gun[6] is not None else None,
                               gun_7=bot.gun[7].id if bot.gun[7] is not None else None,
-                              cooler_0=bot.cooler[0] if bot.cooler[0] is not None else None,
-                              cooler_1=bot.cooler[1] if bot.cooler[1] is not None else None,
-                              cooler_2=bot.cooler[2] if bot.cooler[2] is not None else None,
-                              cooler_3=bot.cooler[3] if bot.cooler[3] is not None else None,
-                              cooler_4=bot.cooler[4] if bot.cooler[4] is not None else None,
-                              cooler_5=bot.cooler[5] if bot.cooler[5] is not None else None,
-                              base_0=bot.base[0] if bot.base[0] is not None else None,
-                              base_1=bot.base[1] if bot.base[1] is not None else None)
+                              cooler_0=bot.cooler[0].id if bot.cooler[0] is not None else None,
+                              cooler_1=bot.cooler[1].id if bot.cooler[1] is not None else None,
+                              cooler_2=bot.cooler[2].id if bot.cooler[2] is not None else None,
+                              cooler_3=bot.cooler[3].id if bot.cooler[3] is not None else None,
+                              cooler_4=bot.cooler[4].id if bot.cooler[4] is not None else None,
+                              cooler_5=bot.cooler[5].id if bot.cooler[5] is not None else None,
+                              base_0=bot.base[0].id if bot.base[0] is not None else None,
+                              base_1=bot.base[1].id if bot.base[1] is not None else None)
 
     form.gun_0.choices = gun_list
     form.gun_1.choices = gun_list
