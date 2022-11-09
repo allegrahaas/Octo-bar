@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="17ece460-f652-400e-8131-0eaa1bc12d69" name="Changes" comment="Complete configure inventory">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Gua18KRPmBMUzPACjxGRG1GLml" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Allegra/PycharmProjects/day-62",
+    "settings.editor.selected.configurable": "reference.idesettings.emmet"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="17ece460-f652-400e-8131-0eaa1bc12d69" name="Changes" comment="" />
+      <created>1667240704546</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667240704546</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Add Requirements document">
+      <created>1667240767033</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667240767033</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add &quot;Build your own drink&quot; requirements">
+      <created>1667257352517</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667257352517</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Create index and header files">
+      <created>1667257367665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667257367665</updated>
+    </task>
+    <task id="LOCAL-00004" summary="DB mapping">
+      <created>1667257407419</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667257407419</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Create .gitignore">
+      <created>1667257417391</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667257417391</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Rename header.html as base.html">
+      <created>1667257978173</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667257978173</updated>
+    </task>
+    <task id="LOCAL-00007" summary="base.html template set up">
+      <created>1667258282896</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667258282896</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add Bootstrap and JQuery core files">
+      <created>1667258362312</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667258362312</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix rollback error for db initialization">
+      <created>1667258398776</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667258398776</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Rename index.html to menu.html">
+      <created>1667427152788</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667427152788</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Stub pages for navigation">
+      <created>1667495118204</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1667495118204</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Switch to dark theme">
+      <created>1667495135257</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1667495135257</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Reusable page parts done">
+      <created>1667495523963</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1667495523963</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add link to settings page">
+      <created>1667495908220</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1667495908220</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add route for settings page">
+      <created>1667495927432</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1667495927432</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Put content into div.container">
+      <created>1667495950597</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667495950597</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Remove div.container so nav is full width">
+      <created>1667594574503</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594574503</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Generate menu from list">
+      <created>1667594636566</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594636566</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add recipe route">
+      <created>1667594714090</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594714090</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Change db initialization to read from csv">
+      <created>1667594772960</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594772960</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Comment cleanup">
+      <created>1667594854143</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594854143</updated>
+    </task>
+    <task id="LOCAL-00022" summary="remove datetime import">
+      <created>1667594865374</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594865374</updated>
+    </task>
+    <task id="LOCAL-00023" summary="File formatting">
+      <created>1667594890545</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594890545</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Add location to Ingredient table">
+      <created>1667594909925</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594909925</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Load recipes for menu">
+      <created>1667594921708</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594921708</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add new column to recipe initialization">
+      <created>1667594964115</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667594964115</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Finish basic recipe page">
+      <created>1667599978968</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1667599978968</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Separate out optional navbar, move container to base">
+      <created>1667601233434</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601233434</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Separate table models into own file">
+      <created>1667601253010</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601253010</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Adjust to fit new base template">
+      <created>1667601278412</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601278412</updated>
+    </task>
+    <task id="LOCAL-00031" summary="load drink recipe for webpage">
+      <created>1667601354364</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601354364</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Refactor table models to separate file">
+      <created>1667601375978</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601375978</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Remove init_app(), unneeded at this point">
+      <created>1667601468501</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601468501</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Part of table refactor">
+      <created>1667601487208</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1667601487208</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Settings page done">
+      <created>1667612842466</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1667612842466</updated>
+    </task>
+    <task id="LOCAL-00036" summary="added sandbox.py that doesn't need tracking">
+      <created>1667612946664</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1667612946664</updated>
+    </task>
+    <task id="LOCAL-00037" summary="added hr under title">
+      <created>1667616207585</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1667616207585</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Adjust vertical margin">
+      <created>1667616743584</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1667616743585</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Complete configure inventory">
+      <created>1667952674728</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1667952674728</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add route for settings page" />
+    <MESSAGE value="Put content into div.container" />
+    <MESSAGE value="Remove div.container so nav is full width" />
+    <MESSAGE value="Generate menu from list" />
+    <MESSAGE value="Add recipe route" />
+    <MESSAGE value="Change db initialization to read from csv" />
+    <MESSAGE value="Comment cleanup" />
+    <MESSAGE value="remove datetime import" />
+    <MESSAGE value="File formatting" />
+    <MESSAGE value="Add location to Ingredient table" />
+    <MESSAGE value="Load recipes for menu" />
+    <MESSAGE value="Add new column to recipe initialization" />
+    <MESSAGE value="Finish basic recipe page" />
+    <MESSAGE value="Separate out optional navbar, move container to base" />
+    <MESSAGE value="Separate table models into own file" />
+    <MESSAGE value="Adjust to fit new base template" />
+    <MESSAGE value="load drink recipe for webpage" />
+    <MESSAGE value="Refactor table models to separate file" />
+    <MESSAGE value="Remove init_app(), unneeded at this point" />
+    <MESSAGE value="Part of table refactor" />
+    <MESSAGE value="Settings page done" />
+    <MESSAGE value="added sandbox.py that doesn't need tracking" />
+    <MESSAGE value="added hr under title" />
+    <MESSAGE value="Adjust vertical margin" />
+    <MESSAGE value="Complete configure inventory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete configure inventory" />
+  </component>
+</project>
