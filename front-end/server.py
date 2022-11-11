@@ -133,7 +133,9 @@ def configure_inventory():
         bot.set_base(db.session.query(Ingredient).get(form.base_0.data), index=0)
         bot.set_base(db.session.query(Ingredient).get(form.base_1.data), index=1)
 
-    return render_template("configure-inventory.html", form=form)
+        return render_template("configure-inventory.html", form=form, success=True)
+
+    return render_template("configure-inventory.html", form=form, success=False)
 
 
 @app.route("/settings/pressurize-cooler-pumps")

@@ -13,6 +13,23 @@
 <form action="{{ url_for('configure_inventory') }}" method="post" class="form text-light">
     {{ form.csrf_token }}
     <div class="row">
+        <div class="col">
+            {% if success %}
+                <div class="alert alert-success">
+                    Configuration successfully updated.
+                </div>
+            {% else %}
+                {% for field in form.errors %}
+                    {% for error in form.errors[field] %}
+                        <div class="alert alert-error">
+                            {{error}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
         <h4 class="col"><u>Gun</u></h4>
     </div>
     <div class="row">
