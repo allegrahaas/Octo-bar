@@ -11,64 +11,64 @@
     <ul class="list-group">
         <li class="list-group-item">{{recipe.amount_1}} oz. - {{recipe.ingredient_1.name}}</li>
         {% if recipe.ingredient_2 is not none %}
-        <li class="list-group-item">
-            {% if recipe.amount_2 == "Fill" %}
-                {{recipe.amount_2}} - {{recipe.ingredient_2.name}}
-            {% else %}
-                {{recipe.amount_2}} oz. - {{recipe.ingredient_2.name}}
-            {% endif %}
-        </li>
+            <li class="list-group-item">
+                {% if recipe.amount_2 == "Fill" %}
+                    {{recipe.amount_2}} - {{recipe.ingredient_2.name}}
+                {% else %}
+                    {{recipe.amount_2}} oz. - {{recipe.ingredient_2.name}}
+                {% endif %}
+            </li>
         {% endif %}
         {% if recipe.ingredient_3 is not none %}
-        <li class="list-group-item">
-            {% if recipe.amount_3 == "Fill" %}
-                {{recipe.amount_3}} - {{recipe.ingredient_3.name}}
-            {% else %}
-                {{recipe.amount_3}} oz. - {{recipe.ingredient_3.name}}
-            {% endif %}
-        </li>
+            <li class="list-group-item">
+                {% if recipe.amount_3 == "Fill" %}
+                    {{recipe.amount_3}} - {{recipe.ingredient_3.name}}
+                {% else %}
+                    {{recipe.amount_3}} oz. - {{recipe.ingredient_3.name}}
+                {% endif %}
+            </li>
         {% endif %}
         {% if recipe.ingredient_4 is not none %}
-        <li class="list-group-item">
-            {% if recipe.amount_4 == "Fill" %}
-                {{recipe.amount_4}} - {{recipe.ingredient_4.name}}
-            {% else %}
-                {{recipe.amount_4}} oz. - {{recipe.ingredient_4.name}}
-            {% endif %}
-        </li>
+            <li class="list-group-item">
+                {% if recipe.amount_4 == "Fill" %}
+                    {{recipe.amount_4}} - {{recipe.ingredient_4.name}}
+                {% else %}
+                    {{recipe.amount_4}} oz. - {{recipe.ingredient_4.name}}
+                {% endif %}
+            </li>
         {% endif %}
         {% if recipe.ingredient_5 is not none %}
-        <li class="list-group-item">
-            {% if recipe.amount_5 == "Fill" %}
-                {{recipe.amount_5}} - {{recipe.ingredient_5.name}}
-            {% else %}
-                {{recipe.amount_5}} oz. - {{recipe.ingredient_5.name}}
-            {% endif %}
-        </li>
+            <li class="list-group-item">
+                {% if recipe.amount_5 == "Fill" %}
+                    {{recipe.amount_5}} - {{recipe.ingredient_5.name}}
+                {% else %}
+                    {{recipe.amount_5}} oz. - {{recipe.ingredient_5.name}}
+                {% endif %}
+            </li>
         {% endif %}
         {% if recipe.ingredient_6 is not none %}
-        <li class="list-group-item">
-            {% if recipe.amount_6 == "Fill" %}
-                {{recipe.amount_6}} - {{recipe.ingredient_6.name}}
-            {% else %}
-                {{recipe.amount_6}} oz. - {{recipe.ingredient_6.name}}
-            {% endif %}
-        </li>
+            <li class="list-group-item">
+                {% if recipe.amount_6 == "Fill" %}
+                    {{recipe.amount_6}} - {{recipe.ingredient_6.name}}
+                {% else %}
+                    {{recipe.amount_6}} oz. - {{recipe.ingredient_6.name}}
+                {% endif %}
+            </li>
         {% endif %}
     </ul>
     <div class="row my-5">
         {% if recipe.fixed_size %}
     <!--    TODO: Wire buttons to back-end-->
-        <div class="col-6 mx-auto">
-            <button class="btn btn-primary btn-lg w-100">Pour</button>
-        </div>
-        {% else %}
-        <div class="col-6">
-            <button class="btn btn-primary btn-lg w-100">Pour Single</button>
-        </div>
-        <div class="col-6">
-            <button class="btn btn-primary btn-lg w-100">Pour Double</button>
-        </div>
+            <div class="col-6 mx-auto">
+                <button class="btn btn-primary btn-lg w-100">Pour</button>
+            </div>
+            {% else %}
+            <div class="col-6">
+                <button class="btn btn-primary btn-lg w-100">Pour Single</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary btn-lg w-100">Pour Double</button>
+            </div>
         {% endif %}
     </div>
 {% endblock %}
