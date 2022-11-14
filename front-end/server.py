@@ -44,8 +44,6 @@ def menu():
         .filter(or_(Recipe.ingredient_6_id.in_(available_ingredients), Recipe.ingredient_6_id.is_(None))) \
         .all()
 
-    print(recipes)
-
     return render_template("menu.html", page="Menu", recipes=recipes)
 
 
@@ -100,15 +98,15 @@ def build_your_own():
             db.session.add(custom_recipe)
             db.session.commit()
 
-        # TODO: make drink
-    print(len(available_ingredients))
+        bot.make_recipe(custom_recipe, False)
+
     return render_template("build-your-own.html", page="BYO", ingredients=available_ingredients, form=form)
 
 
 @app.route("/settings")
 def settings():
-    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
-                           base_pressurized=bot.base_pumps_primed)
+    return render_template("settings.html", cooler_pressurized=bot.cooler_primed,
+                           base_pressurized=bot.base_primed)
 
 
 @app.route("/settings/configure-inventory", methods=["GET", "POST"])
@@ -189,34 +187,41 @@ def configure_inventory():
 @app.route("/settings/pressurize-cooler-pumps")
 def prime_cooler_pumps():
     bot.prime_cooler_pumps()
-    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
-                           base_pressurized=bot.base_pumps_primed)
+    return render_template("settings.html", cooler_pressurized=bot.cooler_primed,
+                           base_pressurized=bot.base_primed)
 
 
 @app.route("/settings/depressurize-cooler-pumps")
 def depressurize_cooler_pumps():
     bot.depressurize_cooler_pumps()
-    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
-                           base_pressurized=bot.base_pumps_primed)
+    return render_template("settings.html", cooler_pressurized=bot.cooler_primed,
+                           base_pressurized=bot.base_primed)
 
 
 @app.route("/settings/pressurize-base-pumps")
 def prime_base_pumps():
     bot.prime_base_pumps()
-    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
-                           base_pressurized=bot.base_pumps_primed)
+    return render_template("settings.html", cooler_pressurized=bot.cooler_primed,
+                           base_pressurized=bot.base_primed)
 
 
 @app.route("/settings/depressurize-base-pumps")
 def depressurize_base_pumps():
     bot.depressurize_base_pumps()
-    return render_template("settings.html", cooler_pressurized=bot.cooler_pumps_primed,
-                           base_pressurized=bot.base_pumps_primed)
+    return render_template("settings.html", cooler_pressurized=bot.cooler_primed,
+                           base_pressurized=bot.base_primed)
 
 
 @app.route("/recipe/<int:recipe_id>")
 def recipe(recipe_id):
     drink_recipe = db.session.query(Recipe).get(recipe_id)
+    return render_template("recipe.html", recipe=drink_recipe)
+
+
+@app.route("/recipe/<int:recipe_id>/pour_drink/<double>")
+def make_recipe(recipe_id, double):
+    drink_recipe = db.session.query(Recipe).get(recipe_id)
+    bot.make_recipe(drink_recipe, bool(double))
     return render_template("recipe.html", recipe=drink_recipe)
 
 
