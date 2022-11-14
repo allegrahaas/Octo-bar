@@ -1,10 +1,73 @@
 {% extends "base.html" %}
 {% block title %}Six-Gun - Build Your Own{% endblock %}
 
-{% block navbar %}
-{% include "navbar.html" %}
-{% endblock %}
+{% block navbar %}{% include "navbar.html" %}{% endblock %}
 
+{% block title_2 %}Build Your Own Drink{% endblock %}
 {% block content %}
-  <h1>Build Your Own Drink</h1>
+    {% if ingredients|length == 1 %}
+        <h3 class="text-light">No available ingredients.<br><br>Inventory likely requires configuration.</h3>
+    {% else %}
+        <form action="{{ url_for('build_your_own') }}" method="post" class="form text-light" novalidate>
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="col">
+                    {% for field in form.errors %}
+                        {% for error in form.errors[field] %}
+                            <div class="alert alert-error" role="alert">
+                                {{error}}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-check">
+                        {{form.save_recipe(class_="form-check-input")}}
+                        {{form.save_recipe.label(class_="form-check-label")}}
+                    </div>
+                    <br>
+                    {{form.name.label(class_="form-control")}}
+                    {{form.name(class_="form-control d-none", id="name-field")}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h4 class="form-label">Amount</h4>
+                </div>
+                <div class="col-3">
+                    <h4 class="form-label">Ingredient</h4>
+                </div>
+            </div>
+            <hr
+            <div class="row">
+                <div class="col-2">
+                    {{form.amount_1(class_="form-control")}}<br>
+                    {{form.amount_2(class_="form-control")}}<br>
+                    {{form.amount_3(class_="form-control")}}<br>
+                    {{form.amount_4(class_="form-control")}}<br>
+                    {{form.amount_5(class_="form-control")}}<br>
+                    {{form.amount_6(class_="form-control")}}<br>
+                </div>
+                <div class="col-3">
+                    {{form.ingredient_1(class_="form-control")}}<br>
+                    {{form.ingredient_2(class_="form-control")}}<br>
+                    {{form.ingredient_3(class_="form-control")}}<br>
+                    {{form.ingredient_4(class_="form-control")}}<br>
+                    {{form.ingredient_5(class_="form-control")}}<br>
+                    {{form.ingredient_6(class_="form-control")}}<br>
+                </div>
+
+                <div class="col-3">
+                    <button class="btn btn-primary btn-lg w-100" type="submit">Make Drink</button>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+        </form>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/build_your_own.js')}}"></script>
 {% endblock %}

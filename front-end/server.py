@@ -7,7 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, URL
 from tables import Recipe, Ingredient, db
-from forms import ConfigureInventory
+from forms import ConfigureInventory, CustomDrink
 from barbot import BarBot
 import pandas
 
@@ -30,21 +30,18 @@ def root():
 
 @app.route('/menu')
 def menu():
-    # TODO: Get relevant recipes
-    active_ingredients = [None]
-    active_ingredients += [ingredient.id for ingredient in bot.gun if ingredient is not None]
-    active_ingredients += [ingredient.id for ingredient in bot.cooler if ingredient is not None]
-    active_ingredients += [ingredient.id for ingredient in bot.base if ingredient is not None]
-
-    print(active_ingredients)
+    available_ingredients = [None]
+    available_ingredients += [ingredient.id for ingredient in bot.gun if ingredient is not None]
+    available_ingredients += [ingredient.id for ingredient in bot.cooler if ingredient is not None]
+    available_ingredients += [ingredient.id for ingredient in bot.base if ingredient is not None]
 
     recipes = db.session.query(Recipe) \
-        .filter(or_(Recipe.ingredient_1_id.in_(active_ingredients), Recipe.ingredient_1_id.is_(None))) \
-        .filter(or_(Recipe.ingredient_2_id.in_(active_ingredients), Recipe.ingredient_2_id.is_(None))) \
-        .filter(or_(Recipe.ingredient_3_id.in_(active_ingredients), Recipe.ingredient_3_id.is_(None))) \
-        .filter(or_(Recipe.ingredient_4_id.in_(active_ingredients), Recipe.ingredient_4_id.is_(None))) \
-        .filter(or_(Recipe.ingredient_5_id.in_(active_ingredients), Recipe.ingredient_5_id.is_(None))) \
-        .filter(or_(Recipe.ingredient_6_id.in_(active_ingredients), Recipe.ingredient_6_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_1_id.in_(available_ingredients), Recipe.ingredient_1_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_2_id.in_(available_ingredients), Recipe.ingredient_2_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_3_id.in_(available_ingredients), Recipe.ingredient_3_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_4_id.in_(available_ingredients), Recipe.ingredient_4_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_5_id.in_(available_ingredients), Recipe.ingredient_5_id.is_(None))) \
+        .filter(or_(Recipe.ingredient_6_id.in_(available_ingredients), Recipe.ingredient_6_id.is_(None))) \
         .all()
 
     print(recipes)
@@ -52,9 +49,60 @@ def menu():
     return render_template("menu.html", page="Menu", recipes=recipes)
 
 
-@app.route("/build-your-own")
+@app.route("/build-your-own", methods=["GET", "POST"])
 def build_your_own():
-    return render_template("build-your-own.html", page="BYO")
+    available_ingredients = [("", "None")]
+    available_ingredients += [(ingredient.id, ingredient.name) for ingredient in bot.gun if ingredient is not None]
+    available_ingredients += [(ingredient.id, ingredient.name) for ingredient in bot.cooler if ingredient is not None]
+    available_ingredients += [(ingredient.id, ingredient.name) for ingredient in bot.base if ingredient is not None]
+
+    form = CustomDrink()
+
+    form.ingredient_1.choices = available_ingredients
+    form.ingredient_2.choices = available_ingredients
+    form.ingredient_3.choices = available_ingredients
+    form.ingredient_4.choices = available_ingredients
+    form.ingredient_5.choices = available_ingredients
+    form.ingredient_6.choices = available_ingredients
+
+    if form.validate_on_submit():
+        custom_recipe = Recipe()
+
+        if form.ingredient_1.data is not None:
+            custom_recipe.amount_1 = form.amount_1.data
+            custom_recipe.ingredient_1 = db.session.query(Ingredient).get(form.ingredient_1.data)
+
+        if form.ingredient_2.data is not None:
+            custom_recipe.amount_2 = form.amount_2.data
+            custom_recipe.ingredient_2 = db.session.query(Ingredient).get(form.ingredient_2.data)
+
+        if form.ingredient_3.data is not None:
+            custom_recipe.amount_3 = form.amount_3.data
+            custom_recipe.ingredient_3 = db.session.query(Ingredient).get(form.ingredient_3.data)
+
+        if form.ingredient_4.data is not None:
+            custom_recipe.amount_4 = form.amount_4.data
+            custom_recipe.ingredient_4 = db.session.query(Ingredient).get(form.ingredient_4.data)
+
+        if form.ingredient_5.data is not None:
+            custom_recipe.amount_5 = form.amount_5.data
+            custom_recipe.ingredient_5 = db.session.query(Ingredient).get(form.ingredient_5.data)
+
+        if form.ingredient_6.data is not None:
+            custom_recipe.amount_6 = form.amount_6.data
+            custom_recipe.ingredient_6 = db.session.query(Ingredient).get(form.ingredient_6.data)
+
+        custom_recipe.custom = True
+        custom_recipe.fixed_size = True
+
+        if form.save_recipe.data:
+            custom_recipe.name = form.name.data if form.name.data is not None else None
+            db.session.add(custom_recipe)
+            db.session.commit()
+
+        # TODO: make drink
+    print(len(available_ingredients))
+    return render_template("build-your-own.html", page="BYO", ingredients=available_ingredients, form=form)
 
 
 @app.route("/settings")
@@ -238,11 +286,32 @@ def init_db():
     save_drink(scotch)
 
 
+def init_bot():
+    bot.gun[0] = db.session.query(Ingredient).get(66)  # Vodka
+    bot.gun[1] = db.session.query(Ingredient).get(54)  # Rum - Light
+    bot.gun[2] = db.session.query(Ingredient).get(63)  # Tequila
+    bot.gun[3] = db.session.query(Ingredient).get(57)  # Scotch
+    bot.gun[4] = db.session.query(Ingredient).get(27)  # Gin
+    bot.gun[5] = db.session.query(Ingredient).get(24)  # Dry Vermouth
+    bot.gun[6] = db.session.query(Ingredient).get(48)  # Orange Liqueur
+    bot.gun[7] = db.session.query(Ingredient).get(62)  # Sweet Vermouth
+
+    bot.cooler[0] = db.session.query(Ingredient).get(58)  # Simple Syrup
+    bot.cooler[1] = db.session.query(Ingredient).get(64)  # Tonic Water
+    bot.cooler[2] = db.session.query(Ingredient).get(17)  # Cola
+    bot.cooler[3] = db.session.query(Ingredient).get(14)  # Club Soda
+    bot.cooler[3] = db.session.query(Ingredient).get(40)  # Lime Juice
+
+    bot.base[0] = db.session.query(Ingredient).get(6)  # Bitters
+    bot.base[1] = db.session.query(Ingredient).get(46)  # Orange Bitters
+
+
 if __name__ == "__main__":
     db.init_app(app)
     with app.app_context():
         db.create_all()
         init_db()
+        init_bot()
 
     app.run(debug=True)
     # app.run(host='0.0.0.0', port=5000)
