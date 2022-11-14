@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    {% import "bootstrap/wtf.html" as wtf %}
+
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
@@ -18,7 +20,9 @@
 <body class="h-100 bg-dark">
     {% block navbar %}{% endblock %}
     <div class="container my-3 py-3">
-    {% block content %}
-    {% endblock %}
+
+        <h1 class="text-light">{% block title_2 %}{% endblock %}</h1>
+        <hr class="w-100 border border-light border-2">
+        {% block content %}{% endblock %}
     </div>
 </body>

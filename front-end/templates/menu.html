@@ -5,16 +5,15 @@
 {% include "navbar.html" %}
 {% endblock %}
 
+{% block title_2 %}Menu{% block title_2 %}
 {% block content %}
-<h1 class="text-light">Menu</h1>
-<hr class="w-100 border border-light border-2">
-{% if recipes|length == 0 %}
-    <h3 class="text-light">No available recipes.<br><br>Inventory likely requires configuration.</h3>
-{% else %}
-<div class="list-group">
-    {% for recipe in recipes %}
-    <a href="{{ url_for('recipe', recipe_id=recipe.id) }}" class="list-group-item list-group-item-action">{{ recipe.name }}</a>
-    {% endfor %}
-</div>
-{% endif %}
+    {% if recipes|length == 0 %}
+        <h3 class="text-light">No available recipes.<br><br>Inventory likely requires configuration.</h3>
+    {% else %}
+        <div class="list-group">
+            {% for recipe in recipes %}
+                <a href="{{ url_for('recipe', recipe_id=recipe.id) }}" class="list-group-item list-group-item-action">{{ recipe.name }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
