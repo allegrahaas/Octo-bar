@@ -10,16 +10,16 @@
     <div class="row">
         <div class="col-4">
             {% if not cooler_pressurized %}
-            <a class="btn btn-primary btn-lg w-100" href="{{ url_for('prime_cooler_pumps') }}">Prime Cooler Pumps</a>
+                <a class="btn btn-primary btn-lg w-100" href="{{ url_for('prime_cooler_pumps') }}">Prime Cooler Pumps</a>
             {% else %}
-            <a class="btn btn-primary btn-lg w-100" href="{{ url_for('depressurize_cooler_pumps') }}">Depressurize Cooler Pumps</a>
+                <a class="btn btn-primary btn-lg w-100" href="{{ url_for('depressurize_cooler_pumps') }}">Depressurize Cooler Pumps</a>
             {% endif %}
         </div>
         <div class="col-4">
             {% if not base_pressurized %}
-            <a class="btn btn-primary btn-lg w-100" href="{{ url_for('prime_base_pumps') }}">Prime Base Pumps</a>
+                <a class="btn btn-primary btn-lg w-100" href="{{ url_for('prime_base_pumps') }}">Prime Base Pumps</a>
             {% else %}
-            <a class="btn btn-primary btn-lg w-100" href="{{ url_for('depressurize_base_pumps') }}">Depressurize Base Pumps</a>
+                <a class="btn btn-primary btn-lg w-100" href="{{ url_for('depressurize_base_pumps') }}">Depressurize Base Pumps</a>
             {% endif %}
         </div>
         <div class="col-4">
