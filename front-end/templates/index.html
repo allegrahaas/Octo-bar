@@ -1,10 +1,31 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% import "bootstrap/wtf.html" as wtf %}
+
+    <title>Octo-Bar</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap/icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+</head>
+<body class="h-100 bg-dark">
+    <a class="btn btn-dark d-flex justify-content-center align-items-center h-100" href="{{url_for('menu')}}">
+        <div class="container-fluid bg-dark h-100 d-flex justify-content-center align-items-center">
+            <img src="{{ url_for('static', filename='img/Octo-Bar.png') }}">
+        </div>
+    </a>
+</body>
 {% block title %}Octo-Bar{% endblock %}
 
 {% block content %}
-    <a class="btn btn-dark d-flex justify-content-center align-items-center h-100" href="{{url_for('menu')}}">
-        <div class="container-fluid bg-dark h-100 d-flex justify-content-center align-items-center">
-            <img src="{{ url_for('static', filename='img/Six-Gun.jpg') }}">
-        </div>
-    </a>
+
 {% endblock %}
