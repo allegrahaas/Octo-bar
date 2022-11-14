@@ -60,14 +60,14 @@
         {% if recipe.fixed_size %}
     <!--    TODO: Wire buttons to back-end-->
             <div class="col-6 mx-auto">
-                <button class="btn btn-primary btn-lg w-100">Pour</button>
+                <a href="{{ url_for('make_recipe', recipe_id=recipe.id, double=False) }}" class="btn btn-primary btn-lg w-100">Pour</a>
             </div>
             {% else %}
             <div class="col-6">
-                <button class="btn btn-primary btn-lg w-100">Pour Single</button>
+                <a href="{{ url_for('make_recipe', recipe_id=recipe.id, double=False) }}" class="btn btn-primary btn-lg w-100">Pour Single</a>
             </div>
             <div class="col-6">
-                <button class="btn btn-primary btn-lg w-100">Pour Double</button>
+                <a href="{{ url_for('make_recipe', recipe_id=recipe.id, double=True) }}" class="btn btn-primary btn-lg w-100">Pour Double</a>
             </div>
         {% endif %}
     </div>
